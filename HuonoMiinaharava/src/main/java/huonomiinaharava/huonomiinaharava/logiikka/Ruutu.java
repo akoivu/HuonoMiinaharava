@@ -11,14 +11,14 @@ package huonomiinaharava.huonomiinaharava.logiikka;
  */
 public abstract class Ruutu {
     
-    private int x;
-    private int y;
+    private int leveys;
+    private int korkeus;
     private boolean klikattu;
     private boolean lippu;
 
     public Ruutu(int x, int y) {
-        this.x = x;
-        this.y = y;
+        this.leveys = x;
+        this.korkeus = y;
         this.klikattu = false;
     }
     
@@ -35,19 +35,19 @@ public abstract class Ruutu {
     }
 
     public int getX() {
-        return x;
+        return leveys;
     }
 
     public void setX(int x) {
-        this.x = x;
+        this.leveys = x;
     }
 
     public int getY() {
-        return y;
+        return korkeus;
     }
 
     public void setY(int y) {
-        this.y = y;
+        this.korkeus = y;
     }
     
     

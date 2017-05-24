@@ -37,9 +37,8 @@ public class Peli {
         System.out.println("Leveys: ");
         leveys = Integer.parseInt(lukija.nextLine());
         
-        ruudukko.kokoaRuudukko(korkeus, leveys);
+        ruudukko.kokoaRuudukko(leveys, korkeus);
         
-        ruudukko.klikkaus(korkeus, leveys);
         System.out.println(ruudukko.toString());
 
         while (true) {
@@ -48,7 +47,8 @@ public class Peli {
             System.out.println("Leveys: ");
             leveys = Integer.parseInt(lukija.nextLine());
 
-            if (ruudukko.klikkaus(korkeus, leveys) == 2) {
+            if (ruudukko.klikkaus(leveys, korkeus) == 2) {
+                System.out.println("Osuit miinaan ja kuolit. Ikävää");
                 break;
             }
 

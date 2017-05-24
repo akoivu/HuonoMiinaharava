@@ -16,14 +16,14 @@ import java.util.Collections;
 public class Ruudukko {
 
     private Ruutu[][] ruudukko;
-    private int korkeus;
     private int leveys;
+    private int korkeus;
     private int miinat;
 
-    public Ruudukko(int korkeus, int leveys, int miinat) {
+    public Ruudukko(int leveys, int korkeus, int miinat) {
         ruudukko = new Ruutu[leveys][korkeus];
-        this.korkeus = leveys;
-        this.leveys = korkeus;
+        this.leveys = leveys;
+        this.korkeus = korkeus;
         this.miinat = miinat;
         kokoaTyhjaRuudukko();
     }
@@ -31,15 +31,15 @@ public class Ruudukko {
     public void kokoaTyhjaRuudukko() {
         for (int i = 0; i < korkeus; i++) {
             for (int j = 0; j < leveys; j++) {
-                ruudukko[i][j] = new Tyhja(i, j);
+                ruudukko[j][i] = new Tyhja(j, i);
             }
         }
     }
 
-    public void kokoaRuudukko(int x, int y) {
+    public void kokoaRuudukko(int klikLeveys, int klikKorkeus) {
         ArrayList<Integer> lista = new ArrayList();
 
-        for (int i = 0; i < korkeus * leveys; i++) {
+        for (int i = 0; i < leveys * korkeus; i++) {
             lista.add(i);
         }
         
@@ -47,12 +47,12 @@ public class Ruudukko {
         
         int i = 0;
         int j = 0;
-        while (j < miinat && i < korkeus * leveys) {
-            int kohtaX = lista.get(i) / leveys;
-            int kohtaY = lista.get(i) % leveys;
+        while (j < miinat && i < leveys * korkeus) {
+            int kohtaLeveys = lista.get(i) % leveys;
+            int kohtaKorkeus = lista.get(i) / leveys;
 
-            if (kohtaX != x || kohtaY != y) {
-                ruudukko[kohtaX][kohtaY] = new Miina(kohtaX, kohtaY);
+            if (kohtaLeveys != klikLeveys || kohtaKorkeus != klikKorkeus) {
+                ruudukko[kohtaLeveys][kohtaKorkeus] = new Miina(kohtaLeveys, kohtaKorkeus);
                 j++;
                 i++;
             } else {
@@ -61,39 +61,75 @@ public class Ruudukko {
         }
         
         ymparykset();
+        
+        klikkaus(klikLeveys, klikKorkeus);
     }
 
-    public int klikkaus(int korkeus, int leveys) {
-        return ruudukko[korkeus][leveys].klikkaus();
+    public int klikkaus(int leveys, int korkeus) {
+        return ruudukko[leveys][korkeus].klikkaus();
     }
 
     public void ymparykset() {
         for (int i = 0; i < korkeus; i++) {
             for (int j = 0; j < leveys; j++) {
-                if (ruudukko[i][j].tyyppi() == 1) {
-                    ymparys(i, j);
+                if (ruudukko[j][i].tyyppi() == 1) {
+                    ymparys(j, i);
                 }
             }
         }
     }
 
-    public void ymparys(int ruutuKorkeus, int ruutuLeveys) {
+    public void ymparys(int ruutuLeveys, int ruutuKorkeus) {
         int montako = 0;
 
         for (int i = ruutuKorkeus - 1; i <= ruutuKorkeus + 1; i++) {
             for (int j = ruutuLeveys - 1; j <= ruutuLeveys + 1; j++) {
                 if (i >= 0 && i < this.korkeus && j >= 0 && j < this.leveys) {
-                    if (ruudukko[i][j].tyyppi() == 2) {
+                    if (ruudukko[j][i].tyyppi() == 2) {
                         montako++;
                     }
                 }
             }
         }
 
-        Tyhja tyhja = (Tyhja) ruudukko[ruutuKorkeus][ruutuLeveys];
+        Tyhja tyhja = (Tyhja) ruudukko[ruutuLeveys][ruutuKorkeus];
 
         tyhja.setYmparys(montako);
     }
+
+    public Ruutu[][] getRuudukko() {
+        return ruudukko;
+    }
+
+    public void setRuudukko(Ruutu[][] ruudukko) {
+        this.ruudukko = ruudukko;
+    }
+
+    public int getLeveys() {
+        return leveys;
+    }
+
+    public void setLeveys(int leveys) {
+        this.leveys = leveys;
+    }
+
+    public int getKorkeus() {
+        return korkeus;
+    }
+
+    public void setKorkeus(int korkeus) {
+        this.korkeus = korkeus;
+    }
+
+    public int getMiinat() {
+        return miinat;
+    }
+
+    public void setMiinat(int miinat) {
+        this.miinat = miinat;
+    }
+    
+    
 
     @Override
     public String toString() {
@@ -101,7 +137,7 @@ public class Ruudukko {
 
         for (int i = 0; i < korkeus; i++) {
             for (int j = 0; j < leveys; j++) {
-                palaute += ruudukko[i][j].toString();
+                palaute += ruudukko[j][i].toString();
             }
 
             palaute += "\n";

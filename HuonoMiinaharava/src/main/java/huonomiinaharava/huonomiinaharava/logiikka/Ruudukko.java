@@ -19,12 +19,14 @@ public class Ruudukko {
     private int leveys;
     private int korkeus;
     private int miinat;
+    private int jaljella;
 
     public Ruudukko(int leveys, int korkeus, int miinat) {
         ruudukko = new Ruutu[leveys][korkeus];
         this.leveys = leveys;
         this.korkeus = korkeus;
         this.miinat = miinat;
+        jaljella = this.leveys * this.korkeus - miinat;
         kokoaTyhjaRuudukko();
     }
 
@@ -36,15 +38,15 @@ public class Ruudukko {
         }
     }
 
-    public void kokoaRuudukko(int klikLeveys, int klikKorkeus) {
+    public int kokoaRuudukko(int klikLeveys, int klikKorkeus) {
         ArrayList<Integer> lista = new ArrayList();
 
         for (int i = 0; i < leveys * korkeus; i++) {
             lista.add(i);
         }
-        
+
         Collections.shuffle(lista);
-        
+
         int i = 0;
         int j = 0;
         while (j < miinat && i < leveys * korkeus) {
@@ -59,14 +61,46 @@ public class Ruudukko {
                 i++;
             }
         }
-        
+
         ymparykset();
-        
-        klikkaus(klikLeveys, klikKorkeus);
+
+        return klikkaus(klikLeveys, klikKorkeus);
     }
 
     public int klikkaus(int leveys, int korkeus) {
-        return ruudukko[leveys][korkeus].klikkaus();
+        int mitaTapahtuu = ruudukko[leveys][korkeus].klikkaus();
+
+        if (mitaTapahtuu == -1) {
+            return -1;
+        } else if (mitaTapahtuu == 0) {
+            laajennus(leveys, korkeus);
+        } else {
+            jaljella--;
+        }
+
+        if (jaljella == 0) {
+            return -2;
+        }
+        
+        return 1;
+    }
+
+    public void laajennus(int ruutuLeveys, int ruutuKorkeus) {
+        for (int i = ruutuKorkeus - 1; i <= ruutuKorkeus + 1; i++) {
+            for (int j = ruutuLeveys - 1; j <= ruutuLeveys + 1; j++) {
+                if (i >= 0 && i < this.korkeus && j >= 0 && j < this.leveys && !ruudukko[j][i].isKlikattu()) {
+                    int palaute = ruudukko[j][i].klikkaus();
+                    
+                    if (palaute == 0) {
+                        laajennus(j, i);
+                    } else {
+                        jaljella--;
+                    }
+                }
+            }
+        }
+
+        jaljella--;
     }
 
     public void ymparykset() {
@@ -128,8 +162,6 @@ public class Ruudukko {
     public void setMiinat(int miinat) {
         this.miinat = miinat;
     }
-    
-    
 
     @Override
     public String toString() {

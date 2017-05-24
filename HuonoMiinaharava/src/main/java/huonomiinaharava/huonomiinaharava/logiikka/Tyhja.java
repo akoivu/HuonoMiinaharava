@@ -29,8 +29,7 @@ public class Tyhja extends Ruutu {
     @Override
     public int klikkaus() {
         this.setKlikattu(true);
-        
-        return 1;
+        return ymparys;
     }
     
     @Override
@@ -42,6 +41,7 @@ public class Tyhja extends Ruutu {
 
     @Override
     public int tyyppi() {
+        if(this.isKlikattu())return 0;
         return 1;
     }
     

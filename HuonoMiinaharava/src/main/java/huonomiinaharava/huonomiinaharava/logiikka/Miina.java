@@ -19,7 +19,7 @@ public class Miina extends Ruutu {
     public int klikkaus() {
         this.setKlikattu(true);
         
-        return 2;
+        return -1;
     }
     
     @Override

@@ -21,25 +21,39 @@ public class MiinaTest {
     public MiinaTest() {
     }
     
-    @BeforeClass
-    public static void setUpClass() {
-    }
-    
-    @AfterClass
-    public static void tearDownClass() {
-    }
+    Miina miina;
     
     @Before
     public void setUp() {
-    }
-    
-    @After
-    public void tearDown() {
+        miina = new Miina(3, 3);
     }
 
-    // TODO add test methods here.
-    // The methods must be annotated with annotation @Test. For example:
-    //
-    // @Test
-    // public void hello() {}
+   @Test
+   public void klikattaessaKlikkautuu(){
+       miina.klikkaus();
+       
+       assertTrue(miina.isKlikattu());
+   }
+   
+   @Test
+   public void toStringOikeinEnnenKlikkausta(){
+       assertEquals("o", miina.toString());
+   }
+   
+   @Test
+   public void toStringOikeinKlikkauksenJalkeen(){
+       miina.klikkaus();
+       
+       assertEquals("x", miina.toString());
+   }
+   
+   @Test
+   public void klikkausPalauttaaOikeanArvon(){
+       assertEquals(-1, miina.klikkaus());
+   }
+   
+   @Test
+   public void oikeaTyyppi(){
+       assertEquals(2, miina.tyyppi());
+   }
 }

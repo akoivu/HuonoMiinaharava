@@ -81,7 +81,7 @@ public class Ruudukko {
         if (jaljella == 0) {
             return -2;
         }
-        
+
         return 1;
     }
 
@@ -90,7 +90,7 @@ public class Ruudukko {
             for (int j = ruutuLeveys - 1; j <= ruutuLeveys + 1; j++) {
                 if (i >= 0 && i < this.korkeus && j >= 0 && j < this.leveys && !ruudukko[j][i].isKlikattu()) {
                     int palaute = ruudukko[j][i].klikkaus();
-                    
+
                     if (palaute == 0) {
                         laajennus(j, i);
                     } else {

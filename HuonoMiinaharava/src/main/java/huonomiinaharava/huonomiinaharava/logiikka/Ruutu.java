@@ -10,7 +10,7 @@ package huonomiinaharava.huonomiinaharava.logiikka;
  * @author anttikoivurova
  */
 public abstract class Ruutu {
-    
+
     private int leveys;
     private int korkeus;
     private boolean klikattu;
@@ -21,9 +21,9 @@ public abstract class Ruutu {
         this.korkeus = y;
         this.klikattu = false;
     }
-    
+
     public abstract int klikkaus();
-    
+
     public abstract int tyyppi();
 
     public boolean isKlikattu() {
@@ -49,6 +49,5 @@ public abstract class Ruutu {
     public void setY(int y) {
         this.korkeus = y;
     }
-    
-    
+
 }

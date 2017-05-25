@@ -10,7 +10,7 @@ package huonomiinaharava.huonomiinaharava.logiikka;
  * @author anttikoivurova
  */
 public class Tyhja extends Ruutu {
-    
+
     private int ymparys;
 
     public Tyhja(int x, int y) {
@@ -31,18 +31,22 @@ public class Tyhja extends Ruutu {
         this.setKlikattu(true);
         return ymparys;
     }
-    
+
     @Override
-    public String toString(){
-        if(!this.isKlikattu()) return "o";
-        
+    public String toString() {
+        if (!this.isKlikattu()) {
+            return "o";
+        }
+
         return "" + ymparys;
     }
 
     @Override
     public int tyyppi() {
-        if(this.isKlikattu())return 0;
+        if (this.isKlikattu()) {
+            return 0;
+        }
         return 1;
     }
-    
+
 }

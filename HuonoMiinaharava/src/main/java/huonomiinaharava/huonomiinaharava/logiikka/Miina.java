@@ -18,14 +18,16 @@ public class Miina extends Ruutu {
     @Override
     public int klikkaus() {
         this.setKlikattu(true);
-        
+
         return -1;
     }
-    
+
     @Override
-    public String toString(){
-        if(!this.isKlikattu()) return "o";
-        
+    public String toString() {
+        if (!this.isKlikattu()) {
+            return "o";
+        }
+
         return "x";
     }
 
@@ -33,5 +35,5 @@ public class Miina extends Ruutu {
     public int tyyppi() {
         return 2;
     }
-    
+
 }

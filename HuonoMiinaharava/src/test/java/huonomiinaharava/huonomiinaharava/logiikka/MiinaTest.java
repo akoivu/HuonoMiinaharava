@@ -17,43 +17,43 @@ import static org.junit.Assert.*;
  * @author anttikoivurova
  */
 public class MiinaTest {
-    
+
     public MiinaTest() {
     }
-    
+
     Miina miina;
-    
+
     @Before
     public void setUp() {
         miina = new Miina(3, 3);
     }
 
-   @Test
-   public void klikattaessaKlikkautuu(){
-       miina.klikkaus();
-       
-       assertTrue(miina.isKlikattu());
-   }
-   
-   @Test
-   public void toStringOikeinEnnenKlikkausta(){
-       assertEquals("o", miina.toString());
-   }
-   
-   @Test
-   public void toStringOikeinKlikkauksenJalkeen(){
-       miina.klikkaus();
-       
-       assertEquals("x", miina.toString());
-   }
-   
-   @Test
-   public void klikkausPalauttaaOikeanArvon(){
-       assertEquals(-1, miina.klikkaus());
-   }
-   
-   @Test
-   public void oikeaTyyppi(){
-       assertEquals(2, miina.tyyppi());
-   }
+    @Test
+    public void klikattaessaKlikkautuu() {
+        miina.klikkaus();
+
+        assertTrue(miina.isKlikattu());
+    }
+
+    @Test
+    public void toStringOikeinEnnenKlikkausta() {
+        assertEquals("o", miina.toString());
+    }
+
+    @Test
+    public void toStringOikeinKlikkauksenJalkeen() {
+        miina.klikkaus();
+
+        assertEquals("x", miina.toString());
+    }
+
+    @Test
+    public void klikkausPalauttaaOikeanArvon() {
+        assertEquals(-1, miina.klikkaus());
+    }
+
+    @Test
+    public void oikeaTyyppi() {
+        assertEquals(2, miina.tyyppi());
+    }
 }

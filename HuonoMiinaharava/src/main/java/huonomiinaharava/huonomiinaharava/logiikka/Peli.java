@@ -40,16 +40,16 @@ public class Peli {
             if (ruudukko.getRuudukko()[dimensioTaulukko[0]][dimensioTaulukko[1]].isKlikattu()) {
                 continue;
             }
-            
+
             int palautus = ruudukko.klikkaus(dimensioTaulukko[0], dimensioTaulukko[1]);
 
             if (palautus == -1) {
                 System.out.println("Osuit miinaan ja kuolit. Ikävää.");
                 break;
-            } else if(palautus == -2) {
+            } else if (palautus == -2) {
                 System.out.println("Voi juku, olet varmaan joku miinaharavamestarihenkilö.");
-                    break;
-            } 
+                break;
+            }
 
             System.out.println(ruudukko.toString());
         }

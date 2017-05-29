@@ -6,3 +6,4 @@ Miinaharava. Toteutetaan perinteinen miinaharavapeli. Tavoitteena saada ainakin 
 
 # Dokumentaatio
 [Aiheen kuvaus](dokumentaatio/aiheenKuvausJaRakenne.md)
+[Tuntikirjanpito](dokumentaatio/tuntikirjanpito.md)

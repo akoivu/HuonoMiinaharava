@@ -23,6 +23,7 @@ public class Ruutu {
         this.leveys = leveys;
         this.korkeus = korkeus;
         this.klikattu = false;
+        this.liputettu = false;
     }
 
     public void klikkaus() {
@@ -82,6 +83,14 @@ public class Ruutu {
 
     public void setYmparys(int ymparys) {
         this.ymparys = ymparys;
+    }
+
+    public boolean isLiputettu() {
+        return liputettu;
+    }
+
+    public void setLiputettu(boolean liputettu) {
+        this.liputettu = liputettu;
     }
 
 }

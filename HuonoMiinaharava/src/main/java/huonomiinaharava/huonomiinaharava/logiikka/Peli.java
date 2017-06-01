@@ -26,21 +26,20 @@ public class Peli {
 
         ruudukko = new Ruudukko(ruudukkoDimensiot[0] + 1, ruudukkoDimensiot[1] + 1, miinat);
 
-        System.out.println(ruudukko.toString());
-        
+        System.out.println(ruudukko.toString(1, 1, 1));
+
         long alku = System.nanoTime();
 
         int[] dimensioTaulukko = dimensiot(ruudukkoDimensiot[0] + 1, ruudukkoDimensiot[1] + 1);
 
-        ruudukko.kokoaRuudukko(dimensioTaulukko[0], dimensioTaulukko[1]);
+        ruudukko.kokoaRuudukko(dimensioTaulukko[0], dimensioTaulukko[1], alku);
 
-        System.out.println(ruudukko.toString());
-        
-        if(ruudukko.getJaljella() == 0){
-            long kesto = System.nanoTime() - alku;
-            System.out.println(ruudukko.voittoViesti(kesto));
-        }
+        System.out.println(ruudukko.toString(System.nanoTime() - alku, dimensioTaulukko[0], dimensioTaulukko[1]));
 
+//        if (ruudukko.getJaljella() == 0) {
+//            long kesto = System.nanoTime() - alku;
+//            System.out.println(ruudukko.voittoViesti(kesto));
+//        }
         while (ruudukko.getTila().equals(Ruudukkotila.PELITILA)) {
             dimensioTaulukko = dimensiot(ruudukkoDimensiot[0] + 1, ruudukkoDimensiot[1] + 1);
 

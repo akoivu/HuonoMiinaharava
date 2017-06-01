@@ -29,7 +29,7 @@ public class Ruutu {
     public void klikkaus() {
         this.setKlikattu(true);
     }
-    
+
     public String toString() {
         switch (tyyppi) {
             case MIINA:
@@ -40,9 +40,9 @@ public class Ruutu {
                 if (klikattu) {
                     return "" + ymparys;
                 }
+            default:
+                return "o";
         }
-
-        return "o";
     }
 
     public Ruututyyppi getTyyppi() {

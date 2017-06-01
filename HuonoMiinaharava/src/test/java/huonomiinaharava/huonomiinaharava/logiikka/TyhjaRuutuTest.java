@@ -37,7 +37,7 @@ public class TyhjaRuutuTest {
     @Test
     public void klikattaessaKlikkautuu() {
         tyhja.klikkaus();
-        
+
         assertTrue(tyhja.isKlikattu());
     }
 
@@ -45,15 +45,15 @@ public class TyhjaRuutuTest {
     public void oikeaSyoteEnnenKlikkausta() {
         assertEquals("o", tyhja.toString());
     }
-    
+
     @Test
     public void oikeaSyoteKlikkauksenJalkeen() {
         tyhja.klikkaus();
         assertEquals("3", tyhja.toString());
     }
-    
+
     @Test
-    public void oikeaTyyppi(){
+    public void oikeaTyyppi() {
         assertEquals(Ruututyyppi.TYHJA, tyhja.tyyppi);
     }
 }

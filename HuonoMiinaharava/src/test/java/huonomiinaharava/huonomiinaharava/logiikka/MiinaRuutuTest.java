@@ -25,7 +25,7 @@ public class MiinaRuutuTest {
 
     @Before
     public void setUp() {
-        miina = new Ruutu(Ruututyyppi.MIINA,3, 3);
+        miina = new Ruutu(Ruututyyppi.MIINA, 3, 3);
     }
 
     @Test
@@ -46,9 +46,19 @@ public class MiinaRuutuTest {
 
         assertEquals("x", miina.toString());
     }
-    
+
     @Test
-    public void oikeaTyyppi(){
+    public void oikeaTyyppi() {
         assertEquals(Ruututyyppi.MIINA, miina.getTyyppi());
+    }
+
+    @Test
+    public void eiAluksiLippua() {
+        assertFalse(miina.isLiputettu());
+    }
+
+    public void lippuKunLiputetaan() {
+        miina.setLiputettu(true);
+        assertTrue(miina.isLiputettu());
     }
 }

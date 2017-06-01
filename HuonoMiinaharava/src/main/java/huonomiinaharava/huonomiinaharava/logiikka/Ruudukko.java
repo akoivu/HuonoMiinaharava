@@ -19,18 +19,19 @@ public class Ruudukko {
     private int leveys;
     private int korkeus;
     private int miinat;
+    private int liputetut;
     private int jaljella;
     private Ruudukkotila tila;
     private long alkuaika;
 
     public Ruudukko(int leveys, int korkeus, int miinat) {
-        ruudukko = new Ruutu[leveys][korkeus];
+        this.ruudukko = new Ruutu[leveys][korkeus];
         this.leveys = leveys;
         this.korkeus = korkeus;
         this.miinat = miinat;
-        tila = Ruudukkotila.PELITILA;
-        jaljella = this.leveys * this.korkeus - miinat;
-        alkuaika = System.nanoTime();
+        this.tila = Ruudukkotila.PELITILA;
+        this.jaljella = this.leveys * this.korkeus - this.miinat;
+        this.liputetut = 0;
         kokoaTyhjaRuudukko();
     }
 
@@ -42,7 +43,8 @@ public class Ruudukko {
         }
     }
 
-    public String kokoaRuudukko(int klikLeveys, int klikKorkeus) {
+    public String kokoaRuudukko(int klikLeveys, int klikKorkeus, long alku) {
+        alkuaika = alku;
         ArrayList<Integer> lista = new ArrayList();
 
         for (int i = 0; i < leveys * korkeus; i++) {
@@ -50,7 +52,6 @@ public class Ruudukko {
         }
 
         Collections.shuffle(lista);
-
         int i = 0;
         int j = 0;
         while (j < miinat && i < leveys * korkeus) {
@@ -67,12 +68,22 @@ public class Ruudukko {
         }
 
         ymparykset();
-
         return klikkaus(klikLeveys, klikKorkeus);
     }
 
     public void liputus(int leveys, int korkeus) {
         Ruutu ruutu = ruudukko[leveys][korkeus];
+
+        if (ruutu.isKlikattu()) {
+            return;
+        }
+
+        if (ruutu.isLiputettu()) {
+            liputetut--;
+        } else {
+            liputetut++;
+        }
+
         ruutu.setLiputettu(!ruutu.isLiputettu());
     }
 
@@ -87,7 +98,6 @@ public class Ruudukko {
 
         if (nykyinen.getTyyppi().equals(Ruututyyppi.MIINA)) {
             tila = Ruudukkotila.HAVIOTILA;
-            return this.havioViesti(leveys, korkeus);
         } else if (nykyinen.getYmparys() == 0) {
             laajennus(leveys, korkeus);
         } else {
@@ -96,10 +106,9 @@ public class Ruudukko {
 
         if (jaljella == 0) {
             tila = Ruudukkotila.VOITTOTILA;
-            return voittoViesti(System.nanoTime() - alkuaika);
         }
 
-        return toString();
+        return toString(System.nanoTime() - alkuaika, leveys, korkeus);
     }
 
     public void laajennus(int ruutuLeveys, int ruutuKorkeus) {
@@ -143,22 +152,8 @@ public class Ruudukko {
                 }
             }
         }
-
         Ruutu ruutuhommeli = ruudukko[ruutuLeveys][ruutuKorkeus];
-
         ruutuhommeli.setYmparys(montako);
-    }
-
-    public Ruudukkotila getTila() {
-        return tila;
-    }
-
-    public void setTila(Ruudukkotila tila) {
-        this.tila = tila;
-    }
-
-    public long getAlkuaika() {
-        return alkuaika;
     }
 
     public void setAlkuaika(long alkuaika) {
@@ -169,84 +164,24 @@ public class Ruudukko {
         return ruudukko;
     }
 
-    public void setRuudukko(Ruutu[][] ruudukko) {
-        this.ruudukko = ruudukko;
+    public Ruudukkotila getTila() {
+        return tila;
     }
 
-    public int getLeveys() {
-        return leveys;
-    }
-
-    public void setLeveys(int leveys) {
-        this.leveys = leveys;
-    }
-
-    public int getKorkeus() {
-        return korkeus;
-    }
-
-    public void setKorkeus(int korkeus) {
-        this.korkeus = korkeus;
-    }
-
-    public int getMiinat() {
-        return miinat;
-    }
-
-    public void setMiinat(int miinat) {
-        this.miinat = miinat;
-    }
-
-    public int getJaljella() {
-        return jaljella;
-    }
-
-    public void setJaljella(int jaljella) {
-        this.jaljella = jaljella;
-    }
-
-    @Override
-    public String toString() {
+    public String toString(long aika, int leveys, int korkeus) {
         String palaute = "";
-
-        for (int i = 0; i < korkeus; i++) {
-            for (int j = 0; j < leveys; j++) {
-                palaute += ruudukko[j][i].toString();
-            }
-
-            palaute += "\n";
+        if (tila.equals(Ruudukkotila.HAVIOTILA)) {
+            palaute += "HAISADIOYijnoetedgijopdijopgdpjoi\n";
+        } else if (tila.equals(Ruudukkotila.VOITTOTILA)) {
+            palaute += "JESJEJSEJJSEJSEJALNKJKNFS\n";
         }
 
-        return palaute;
-    }
-
-    public String voittoViesti(long aika) {
-        String palaute = "Hyvin tehty, jesjes!\nAikasi oli " + aika / 1000000000 + " sekuntia.\n";
-
-        for (int i = 0; i < korkeus; i++) {
-            for (int j = 0; j < leveys; j++) {
-                if (ruudukko[j][i].getTyyppi().equals(Ruututyyppi.TYHJA)) {
-                    palaute += ruudukko[j][i].toString();
-                } else {
-                    palaute += "L";
-                }
-            }
-
-            palaute += "\n";
-        }
-
-        return palaute;
-    }
-
-    public String havioViesti(int osumaleveys, int osumakorkeus) {
-        String palaute = "Hävisit. Harmi!\n";
-
-        for (int i = 0; i < korkeus; i++) {
-            for (int j = 0; j < leveys; j++) {
-                if (j == osumaleveys && i == osumakorkeus) {
+        for (int i = 0; i < this.korkeus; i++) {
+            for (int j = 0; j < this.leveys; j++) {
+                if (j == leveys && i == korkeus && tila.equals(Ruudukkotila.HAVIOTILA)) {
                     palaute += "X";
-                } else if (ruudukko[j][i].getTyyppi().equals(Ruututyyppi.MIINA)) {
-                    palaute += "x";
+                } else if (ruudukko[j][i].getTyyppi().equals(Ruututyyppi.MIINA) && tila.equals(Ruudukkotila.VOITTOTILA)) {
+                    palaute += "L";
                 } else {
                     palaute += ruudukko[j][i].toString();
                 }

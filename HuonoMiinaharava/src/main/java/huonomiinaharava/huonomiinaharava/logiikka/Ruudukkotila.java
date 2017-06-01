@@ -10,5 +10,6 @@ package huonomiinaharava.huonomiinaharava.logiikka;
  * @author anttikoivurova
  */
 public enum Ruudukkotila {
+
     PELITILA, VOITTOTILA, HAVIOTILA
 }

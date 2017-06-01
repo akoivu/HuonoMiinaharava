@@ -10,5 +10,6 @@ package huonomiinaharava.huonomiinaharava.logiikka;
  * @author anttikoivurova
  */
 public enum Ruututyyppi {
+
     MIINA, TYHJA
 }

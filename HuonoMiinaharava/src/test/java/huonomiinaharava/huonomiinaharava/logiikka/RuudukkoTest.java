@@ -57,26 +57,26 @@ public class RuudukkoTest {
             testi += "\n";
         }
 
-        assertEquals(testi, normiRuudukko.toString());
+        assertEquals(testi, normiRuudukko.toString(7, 4, 1));
     }
 
     @Test
     public void ekaKlikkausReunassa() {
-        taysRuudukko.kokoaRuudukko(0, 2);
+        taysRuudukko.kokoaRuudukko(0, 2, 1);
 
         assertEquals(taysRuudukko.getRuudukko()[0][2].toString(), "5");
     }
 
     @Test
     public void ekaKlikkausKeskella() {
-        taysRuudukko.kokoaRuudukko(1, 2);
+        taysRuudukko.kokoaRuudukko(1, 2, 1);
 
         assertEquals(taysRuudukko.getRuudukko()[1][2].toString(), "8");
     }
 
     @Test
     public void ekaKlikkausNurkassa() {
-        taysRuudukko.kokoaRuudukko(0, 0);
+        taysRuudukko.kokoaRuudukko(0, 0, 1);
 
         assertEquals(taysRuudukko.getRuudukko()[0][0].toString(), "3");
     }
@@ -85,11 +85,12 @@ public class RuudukkoTest {
     public void laajennusToimii() {
         vakioRuudukkoPieni.klikkaus(0, 0);
 
-        String vertailu = "000\n"
+        String vertailu = "JESJEJSEJJSEJSEJALNKJKNFS\n";
+        vertailu += "000\n"
                 + "011\n"
-                + "01o\n";
+                + "01L\n";
 
-        assertEquals(vertailu, vakioRuudukkoPieni.toString());
+        assertEquals(vertailu, vakioRuudukkoPieni.toString(3, 3, 1));
     }
 
     @Test
@@ -98,4 +99,41 @@ public class RuudukkoTest {
 
         assertEquals(3, ruutu.getYmparys());
     }
+
+    @Test
+    public void liputusToimiiTyhjalla() {
+        vakioRuudukkoIso.liputus(2, 2);
+
+        Ruutu ruutu = vakioRuudukkoIso.getRuudukko()[2][2];
+
+        assertTrue(ruutu.isLiputettu());
+    }
+
+    @Test
+    public void lipunPoistoToimiiTyhjalla() {
+        vakioRuudukkoIso.liputus(2, 2);
+        vakioRuudukkoIso.liputus(2, 2);
+        Ruutu ruutu = vakioRuudukkoIso.getRuudukko()[2][2];
+
+        assertFalse(ruutu.isLiputettu());
+    }
+
+    @Test
+    public void liputusToimiiMiinalla() {
+        vakioRuudukkoIso.liputus(2, 3);
+
+        Ruutu ruutu = vakioRuudukkoIso.getRuudukko()[2][3];
+
+        assertTrue(ruutu.isLiputettu());
+    }
+
+    @Test
+    public void lipunPoistoToimiiMiinalla() {
+        vakioRuudukkoIso.liputus(2, 3);
+        vakioRuudukkoIso.liputus(2, 3);
+        Ruutu ruutu = vakioRuudukkoIso.getRuudukko()[2][3];
+
+        assertFalse(ruutu.isLiputettu());
+    }
+
 }

@@ -17,16 +17,16 @@ import static org.junit.Assert.*;
  * @author anttikoivurova
  */
 public class PeliTest {
-    
+
     public PeliTest() {
     }
-    
+
     @Before
     public void setUp() {
     }
-    
+
     @Test
-    public void eiAnnaAntaaLiianIsoaRajaa(){
+    public void eiAnnaAntaaLiianIsoaRajaa() {
         assertTrue(true);
     }
 }

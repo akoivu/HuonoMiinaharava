@@ -20,25 +20,29 @@ public class Ruudukko {
     private int korkeus;
     private int miinat;
     private int jaljella;
+    private Ruudukkotila tila;
+    private long alkuaika;
 
     public Ruudukko(int leveys, int korkeus, int miinat) {
         ruudukko = new Ruutu[leveys][korkeus];
         this.leveys = leveys;
         this.korkeus = korkeus;
         this.miinat = miinat;
+        tila = Ruudukkotila.PELITILA;
         jaljella = this.leveys * this.korkeus - miinat;
+        alkuaika = System.nanoTime();
         kokoaTyhjaRuudukko();
     }
 
     public void kokoaTyhjaRuudukko() {
         for (int i = 0; i < korkeus; i++) {
             for (int j = 0; j < leveys; j++) {
-                ruudukko[j][i] = new Tyhja(j, i);
+                ruudukko[j][i] = new Ruutu(Ruututyyppi.TYHJA, j, i);
             }
         }
     }
 
-    public int kokoaRuudukko(int klikLeveys, int klikKorkeus) {
+    public String kokoaRuudukko(int klikLeveys, int klikKorkeus) {
         ArrayList<Integer> lista = new ArrayList();
 
         for (int i = 0; i < leveys * korkeus; i++) {
@@ -54,7 +58,7 @@ public class Ruudukko {
             int kohtaKorkeus = lista.get(i) / leveys;
 
             if (kohtaLeveys != klikLeveys || kohtaKorkeus != klikKorkeus) {
-                ruudukko[kohtaLeveys][kohtaKorkeus] = new Miina(kohtaLeveys, kohtaKorkeus);
+                ruudukko[kohtaLeveys][kohtaKorkeus] = new Ruutu(Ruututyyppi.MIINA, kohtaLeveys, kohtaKorkeus);
                 j++;
                 i++;
             } else {
@@ -67,31 +71,34 @@ public class Ruudukko {
         return klikkaus(klikLeveys, klikKorkeus);
     }
 
-    public int klikkaus(int leveys, int korkeus) {
-        int mitaTapahtuu = ruudukko[leveys][korkeus].klikkaus();
+    public String klikkaus(int leveys, int korkeus) {
+        Ruutu nykyinen = ruudukko[leveys][korkeus];
+        nykyinen.klikkaus();
 
-        if (mitaTapahtuu == -1) {
-            return -1;
-        } else if (mitaTapahtuu == 0) {
+        if (nykyinen.getTyyppi().equals(Ruututyyppi.MIINA)) {
+            tila = Ruudukkotila.HAVIOTILA;
+            return this.havioViesti(leveys, korkeus);
+        } else if (nykyinen.getYmparys() == 0) {
             laajennus(leveys, korkeus);
         } else {
             jaljella--;
         }
 
         if (jaljella == 0) {
-            return -2;
+            tila = Ruudukkotila.VOITTOTILA;
+            return voittoViesti(System.nanoTime() - alkuaika);
         }
 
-        return 1;
+        return toString();
     }
 
     public void laajennus(int ruutuLeveys, int ruutuKorkeus) {
         for (int i = ruutuKorkeus - 1; i <= ruutuKorkeus + 1; i++) {
             for (int j = ruutuLeveys - 1; j <= ruutuLeveys + 1; j++) {
                 if (i >= 0 && i < this.korkeus && j >= 0 && j < this.leveys && !ruudukko[j][i].isKlikattu()) {
-                    int palaute = ruudukko[j][i].klikkaus();
+                    ruudukko[j][i].klikkaus();
 
-                    if (palaute == 0) {
+                    if (ruudukko[j][i].getYmparys() == 0) {
                         laajennus(j, i);
                     } else {
                         jaljella--;
@@ -106,7 +113,7 @@ public class Ruudukko {
     public void ymparykset() {
         for (int i = 0; i < korkeus; i++) {
             for (int j = 0; j < leveys; j++) {
-                if (ruudukko[j][i].tyyppi() == 1) {
+                if (ruudukko[j][i].getTyyppi().equals(Ruututyyppi.TYHJA)) {
                     ymparys(j, i);
                 }
             }
@@ -119,17 +126,35 @@ public class Ruudukko {
         for (int i = ruutuKorkeus - 1; i <= ruutuKorkeus + 1; i++) {
             for (int j = ruutuLeveys - 1; j <= ruutuLeveys + 1; j++) {
                 if (i >= 0 && i < this.korkeus && j >= 0 && j < this.leveys) {
-                    if (ruudukko[j][i].tyyppi() == 2) {
+                    if (ruudukko[j][i].getTyyppi().equals(Ruututyyppi.MIINA)) {
                         montako++;
                     }
                 }
             }
         }
 
-        Tyhja tyhja = (Tyhja) ruudukko[ruutuLeveys][ruutuKorkeus];
+        Ruutu ruutuhommeli = ruudukko[ruutuLeveys][ruutuKorkeus];
 
-        tyhja.setYmparys(montako);
+        ruutuhommeli.setYmparys(montako);
     }
+
+    public Ruudukkotila getTila() {
+        return tila;
+    }
+
+    public void setTila(Ruudukkotila tila) {
+        this.tila = tila;
+    }
+
+    public long getAlkuaika() {
+        return alkuaika;
+    }
+
+    public void setAlkuaika(long alkuaika) {
+        this.alkuaika = alkuaika;
+    }
+    
+    
 
     public Ruutu[][] getRuudukko() {
         return ruudukko;
@@ -163,6 +188,14 @@ public class Ruudukko {
         this.miinat = miinat;
     }
 
+    public int getJaljella() {
+        return jaljella;
+    }
+
+    public void setJaljella(int jaljella) {
+        this.jaljella = jaljella;
+    }
+
     @Override
     public String toString() {
         String palaute = "";
@@ -170,6 +203,44 @@ public class Ruudukko {
         for (int i = 0; i < korkeus; i++) {
             for (int j = 0; j < leveys; j++) {
                 palaute += ruudukko[j][i].toString();
+            }
+
+            palaute += "\n";
+        }
+
+        return palaute;
+    }
+
+    public String voittoViesti(long aika) {
+        String palaute = "Hyvin tehty, jesjes!\nAikasi oli " + aika / 1000000000 + " sekuntia.\n";
+
+        for (int i = 0; i < korkeus; i++) {
+            for (int j = 0; j < leveys; j++) {
+                if (ruudukko[j][i].getTyyppi().equals(Ruututyyppi.TYHJA)) {
+                    palaute += ruudukko[j][i].toString();
+                } else {
+                    palaute += "L";
+                }
+            }
+
+            palaute += "\n";
+        }
+
+        return palaute;
+    }
+
+    public String havioViesti(int osumaleveys, int osumakorkeus) {
+        String palaute = "Hävisit. Harmi!\n";
+
+        for (int i = 0; i < korkeus; i++) {
+            for (int j = 0; j < leveys; j++) {
+                if (j == osumaleveys && i == osumakorkeus) {
+                    palaute += "X";
+                } else if (ruudukko[j][i].getTyyppi().equals(Ruututyyppi.MIINA)){
+                    palaute += "x";
+                } else {
+                    palaute += ruudukko[j][i].toString();
+                }
             }
 
             palaute += "\n";

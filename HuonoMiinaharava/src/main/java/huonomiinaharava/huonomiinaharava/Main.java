@@ -16,8 +16,6 @@ import java.util.stream.IntStream;
 public class Main {
 
     public static void main(String[] args) {
-        int[][] hasu = new int[2][4];
-
         Peli peli = new Peli();
 
         peli.kaynnista();

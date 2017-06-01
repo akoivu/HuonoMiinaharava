@@ -32,16 +32,16 @@ public class RuudukkoTest {
         taysRuudukko = new Ruudukko(4, 7, 27);
         vakioRuudukkoPieni = new Ruudukko(3, 3, 1);
         vakioRuudukkoPieni.kokoaTyhjaRuudukko();
-        vakioRuudukkoPieni.getRuudukko()[2][2] = new Miina(2, 2);
+        vakioRuudukkoPieni.getRuudukko()[2][2] = new Ruutu(Ruututyyppi.MIINA, 2, 2);
         vakioRuudukkoPieni.ymparykset();
 
         vakioRuudukkoIso = new Ruudukko(5, 5, 5);
         vakioRuudukkoIso.kokoaTyhjaRuudukko();
-        vakioRuudukkoIso.getRuudukko()[4][0] = new Miina(4, 0);
-        vakioRuudukkoIso.getRuudukko()[1][2] = new Miina(1, 2);
-        vakioRuudukkoIso.getRuudukko()[1][3] = new Miina(1, 3);
-        vakioRuudukkoIso.getRuudukko()[2][3] = new Miina(2, 3);
-        vakioRuudukkoIso.getRuudukko()[2][4] = new Miina(2, 4);
+        vakioRuudukkoIso.getRuudukko()[4][0] = new Ruutu(Ruututyyppi.MIINA, 4, 0);
+        vakioRuudukkoIso.getRuudukko()[1][2] = new Ruutu(Ruututyyppi.MIINA, 1, 2);
+        vakioRuudukkoIso.getRuudukko()[1][3] = new Ruutu(Ruututyyppi.MIINA, 1, 3);
+        vakioRuudukkoIso.getRuudukko()[2][3] = new Ruutu(Ruututyyppi.MIINA, 2, 3);
+        vakioRuudukkoIso.getRuudukko()[2][4] = new Ruutu(Ruututyyppi.MIINA, 2, 4);
         vakioRuudukkoIso.ymparykset();
     }
 
@@ -94,8 +94,8 @@ public class RuudukkoTest {
 
     @Test
     public void oikeaYmparys() {
-        Tyhja tyhja = (Tyhja) vakioRuudukkoIso.getRuudukko()[2][2];
+        Ruutu ruutu = vakioRuudukkoIso.getRuudukko()[2][2];
 
-        assertEquals(3, tyhja.getYmparys());
+        assertEquals(3, ruutu.getYmparys());
     }
 }

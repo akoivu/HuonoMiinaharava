@@ -21,56 +21,51 @@ public class Peli {
     }
 
     public void kaynnista() {
-        int[] dimensioTaulukko = dimensiot();
-        int miinat = miinaMaara((dimensioTaulukko[0] + 1) * (dimensioTaulukko[1] + 1));
+        int[] ruudukkoDimensiot = dimensiot(20, 20);
+        int miinat = miinaMaara((ruudukkoDimensiot[0] + 1) * (ruudukkoDimensiot[1] + 1));
 
-        Ruudukko ruudukko = new Ruudukko(dimensioTaulukko[0] + 1, dimensioTaulukko[1] + 1, miinat);
+        ruudukko = new Ruudukko(ruudukkoDimensiot[0] + 1, ruudukkoDimensiot[1] + 1, miinat);
 
         System.out.println(ruudukko.toString());
+        
+        long alku = System.nanoTime();
 
-        dimensioTaulukko = dimensiot();
+        int[] dimensioTaulukko = dimensiot(ruudukkoDimensiot[0] + 1, ruudukkoDimensiot[1] + 1);
 
         ruudukko.kokoaRuudukko(dimensioTaulukko[0], dimensioTaulukko[1]);
 
         System.out.println(ruudukko.toString());
+        
+        if(ruudukko.getJaljella() == 0){
+            long kesto = System.nanoTime() - alku;
+            System.out.println(ruudukko.voittoViesti(kesto));
+        }
 
-        while (true) {
-            dimensioTaulukko = dimensiot();
+        while (ruudukko.getTila().equals(Ruudukkotila.PELITILA)) {
+            dimensioTaulukko = dimensiot(ruudukkoDimensiot[0] + 1, ruudukkoDimensiot[1] + 1);
 
             if (ruudukko.getRuudukko()[dimensioTaulukko[0]][dimensioTaulukko[1]].isKlikattu()) {
                 continue;
             }
 
-            int palautus = ruudukko.klikkaus(dimensioTaulukko[0], dimensioTaulukko[1]);
-
-            if (palautus == -1) {
-                System.out.println("Osuit miinaan ja kuolit. Ikävää.");
-                break;
-            } else if (palautus == -2) {
-                System.out.println("Voi juku, olet varmaan joku miinaharavamestarihenkilö.");
-                break;
-            }
-
-            System.out.println(ruudukko.toString());
+            System.out.println(ruudukko.klikkaus(dimensioTaulukko[0], dimensioTaulukko[1]));
         }
-
-        System.out.println(ruudukko.toString());
     }
 
-    public int[] dimensiot() {
+    public int[] dimensiot(int leveysraja, int korkeusraja) {
         System.out.println("Korkeus: ");
         int korkeus = Integer.parseInt(lukija.nextLine()) - 1;
 
-        while (korkeus >= 20 || korkeus < 0) {
-            System.out.println("Korkeuden pitää olla kokonaisluku välillä [1, 20]. Yritähän nyt vielä kerran: ");
+        while (korkeus >= korkeusraja || korkeus < 0) {
+            System.out.println("Korkeuden pitää olla kokonaisluku välillä [1, " + korkeusraja + "]. Yritähän nyt vielä kerran: ");
             korkeus = Integer.parseInt(lukija.nextLine()) - 1;
         }
 
         System.out.println("Leveys: ");
         int leveys = Integer.parseInt(lukija.nextLine()) - 1;
 
-        while (leveys >= 20 || leveys < 0) {
-            System.out.println("Leveyden pitää olla kokonaisluku välillä [1, 20]. Yritähän nyt vielä kerran: ");
+        while (leveys >= leveysraja || leveys < 0) {
+            System.out.println("Leveyden pitää olla kokonaisluku välillä [1, " + leveysraja + "]. Yritähän nyt vielä kerran: ");
             leveys = Integer.parseInt(lukija.nextLine()) - 1;
         }
 

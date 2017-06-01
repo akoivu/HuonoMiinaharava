@@ -16,16 +16,16 @@ import static org.junit.Assert.*;
  *
  * @author anttikoivurova
  */
-public class MiinaTest {
+public class MiinaRuutuTest {
 
-    public MiinaTest() {
+    public MiinaRuutuTest() {
     }
 
-    Miina miina;
+    Ruutu miina;
 
     @Before
     public void setUp() {
-        miina = new Miina(3, 3);
+        miina = new Ruutu(Ruututyyppi.MIINA,3, 3);
     }
 
     @Test
@@ -46,14 +46,9 @@ public class MiinaTest {
 
         assertEquals("x", miina.toString());
     }
-
+    
     @Test
-    public void klikkausPalauttaaOikeanArvon() {
-        assertEquals(-1, miina.klikkaus());
-    }
-
-    @Test
-    public void oikeaTyyppi() {
-        assertEquals(2, miina.tyyppi());
+    public void oikeaTyyppi(){
+        assertEquals(Ruututyyppi.MIINA, miina.getTyyppi());
     }
 }

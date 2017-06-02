@@ -7,3 +7,4 @@ Päivä | Tunnit | Kuvaus
 24.5.2017 | 1h | Pientä yleisvärkkäilyä
 25.5.2017 | 4h | Logiikka, testit ja dokumentaatio kuntoon
 29.5.2017 | 3h | Korjaukset logiikkaan
+1.6.2017 | 4h | Logiikan näpräystä ja dokumentaatio kuntoon

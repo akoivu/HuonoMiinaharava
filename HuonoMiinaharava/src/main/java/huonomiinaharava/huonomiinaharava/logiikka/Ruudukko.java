@@ -24,6 +24,12 @@ public class Ruudukko {
     private Ruudukkotila tila;
     private long alkuaika;
 
+    /**
+     * Luo yksittäisen miinaharavaruudukon.
+     * @param leveys ruudukon leveys
+     * @param korkeus ruudukon korkeus
+     * @param miinat ruudukon miinat
+     */
     public Ruudukko(int leveys, int korkeus, int miinat) {
         this.ruudukko = new Ruutu[leveys][korkeus];
         this.leveys = leveys;
@@ -35,6 +41,9 @@ public class Ruudukko {
         kokoaTyhjaRuudukko();
     }
 
+    /**
+     * Alustaa ruudukon täyteen tyhjiä ruutuja.
+     */
     public void kokoaTyhjaRuudukko() {
         for (int i = 0; i < korkeus; i++) {
             for (int j = 0; j < leveys; j++) {
@@ -43,6 +52,13 @@ public class Ruudukko {
         }
     }
 
+    /**
+     * Ensimmäisen klikkauksen jälkeen asettaa miinat tyhjään ruudukkoon.
+     * @param klikLeveys ensimmäisen klikkauksen leveyskoordinaatti
+     * @param klikKorkeus ensimmäisen klikkauksen korkeuskoordinaatti
+     * @param alku ensimmäisen klikkauksen aika
+     * @return ruudukon tilanne ensimmäisen klikkauksen jälkeen
+     */
     public String kokoaRuudukko(int klikLeveys, int klikKorkeus, long alku) {
         alkuaika = alku;
         ArrayList<Integer> lista = new ArrayList();
@@ -71,6 +87,11 @@ public class Ruudukko {
         return klikkaus(klikLeveys, klikKorkeus);
     }
 
+    /**
+     * Liputtaa ruudun.
+     * @param leveys liputettavan ruudun leveyskoordinaatti
+     * @param korkeus liputettavan ruudun korkeuskoordinaatti 
+     */
     public void liputus(int leveys, int korkeus) {
         Ruutu ruutu = ruudukko[leveys][korkeus];
 
@@ -87,6 +108,12 @@ public class Ruudukko {
         ruutu.setLiputettu(!ruutu.isLiputettu());
     }
 
+    /**
+     * Hoitaa ruudukon ruudun klikkauksen riippuen ruudun tilasta; saattaa muuttaa ruudukon tilaa. 
+     * @param leveys klikattavan ruudun leveyskoordinaatit
+     * @param korkeus klikattavan ruudun korkeuskoordinaatit
+     * @return pelin tilanne klikkauksen jälkeen
+     */
     public String klikkaus(int leveys, int korkeus) {
         Ruutu nykyinen = ruudukko[leveys][korkeus];
 
@@ -111,6 +138,11 @@ public class Ruudukko {
         return toString(System.nanoTime() - alkuaika, leveys, korkeus);
     }
 
+    /**
+     * Automaattisesti aukaisee klikattavan ympärillä olevat ruudut, jos ruudun ympärillä on  nolla miinaa.
+     * @param ruutuLeveys käsiteltävän ruudun leveyskoordinaatti
+     * @param ruutuKorkeus käsiteltävän ruudun korkeuskoordinaatti 
+     */
     public void laajennus(int ruutuLeveys, int ruutuKorkeus) {
         for (int i = ruutuKorkeus - 1; i <= ruutuKorkeus + 1; i++) {
             for (int j = ruutuLeveys - 1; j <= ruutuLeveys + 1; j++) {
@@ -130,6 +162,9 @@ public class Ruudukko {
         jaljella--;
     }
 
+    /**
+     * Käy läpi ruudukon ja kutsuu jokaiselle ruudulle metodia ympärys();
+     */
     public void ymparykset() {
         for (int i = 0; i < korkeus; i++) {
             for (int j = 0; j < leveys; j++) {
@@ -140,6 +175,11 @@ public class Ruudukko {
         }
     }
 
+    /**
+     * Selvittää käsiteltävää ruutua ympäröivien miinojen määrän.
+     * @param ruutuLeveys käsiteltävän ruudun leveyskoordinaatti
+     * @param ruutuKorkeus käsiteltävän ruudun korkeuskoordinaatti
+     */
     public void ymparys(int ruutuLeveys, int ruutuKorkeus) {
         int montako = 0;
 
@@ -156,18 +196,37 @@ public class Ruudukko {
         ruutuhommeli.setYmparys(montako);
     }
 
+    /**
+     * 
+     * @param alkuaika ruudukon aloitushetki
+     */
     public void setAlkuaika(long alkuaika) {
         this.alkuaika = alkuaika;
     }
 
+    /**
+     * 
+     * @return ruudukko kaksiulotteisena Ruutu-taulukkona
+     */
     public Ruutu[][] getRuudukko() {
         return ruudukko;
     }
 
+    /**
+     * 
+     * @return ruudukon tämänhetkinen tila
+     */
     public Ruudukkotila getTila() {
         return tila;
     }
 
+    /**
+     * ruudukon toString().
+     * @param aika aloituksesta kulunut aika
+     * @param leveys viimeisimmän klikkauksen leveyskoordinaatti
+     * @param korkeus viimeisimmän klikkauksen korkeuskoordinaatti
+     * @return ruudukko tekstimuodossa
+     */
     public String toString(long aika, int leveys, int korkeus) {
         String palaute = "";
         if (tila.equals(Ruudukkotila.HAVIOTILA)) {

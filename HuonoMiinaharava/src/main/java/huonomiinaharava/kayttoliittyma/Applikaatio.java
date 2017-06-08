@@ -15,6 +15,11 @@ import javafx.stage.Stage;
 
 public class Applikaatio extends Application {
 
+    /**
+     * Muodostaa graafisen käyttöliittymän.
+     * @param primaryStage 
+     * @throws Exception 
+     */
     @Override
     public void start(Stage primaryStage) throws Exception {
         Ruutu ruutu = new Ruutu(Ruututyyppi.MIINA, 3, 3);

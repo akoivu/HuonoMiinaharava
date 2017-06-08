@@ -20,6 +20,12 @@ public class PeliToiminta {
     private ImageView[][] kuvaRuudukko;
     private GridPane grid;
 
+    /**
+     * Muodostaa uuden pelin annetuilla parametreilla, ei toimi.
+     * @param leveys ruudukon leveys
+     * @param korkeus ruudukon korkeus
+     * @param miinat ruudukon miinamäärä
+     */
     public PeliToiminta(int leveys, int korkeus, int miinat) {
         ruudukko = new Ruudukko(leveys, korkeus, miinat);
         kuvaRuudukko = new ImageView[leveys][korkeus];
@@ -35,10 +41,19 @@ public class PeliToiminta {
 //        asetaActionit(leveys, korkeus);
     }
 
+    /**
+     * 
+     * @return peli GridPane-muodossa
+     */
     public GridPane getGrid() {
         return grid;
     }
 
+    /**
+     * Asettaa jokaiselle ruudulle actionin, ei toimi.
+     * @param leveys ruudukon leveys
+     * @param korkeus ruudukon korkeus
+     */
     public void asetaActionit(int leveys, int korkeus) {
         for (int i = 1; i < korkeus; i++) {
             for (int j = 1; j < leveys; j++) {
@@ -55,6 +70,11 @@ public class PeliToiminta {
         }
     }
 
+    /**
+     * Hoitaa klikkauksen.
+     * @param leveys klikkauksen leveyskoordinaatti
+     * @param korkeus klikkauksen korkeuskoordinaatti
+     */
     public void klikkaus(int leveys, int korkeus) {
         
     }

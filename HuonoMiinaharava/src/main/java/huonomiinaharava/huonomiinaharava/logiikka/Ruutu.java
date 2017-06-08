@@ -9,18 +9,24 @@ import java.io.File;
 import javafx.scene.image.Image;
 
 /**
- *
- * @author anttikoivurova
+ * Luokka tarjoaa yksittäisen miinaharavaruudun toiminnallisuuden.
  */
 public class Ruutu {
 
-    Ruututyyppi tyyppi;
+    private Ruututyyppi tyyppi;
     private int leveys;
     private int korkeus;
     private boolean klikattu;
     private int ymparys;
     private boolean liputettu;
 
+    /**
+     * Muodostaa yksittäisen miinaharavaruudun.
+     *
+     * @param tyyppi Minkätyyppinen ruutu tulee olemaan
+     * @param leveys Ruudun paikka leveyssuunnassa
+     * @param korkeus Ruudun paikka korkeussuunnassa
+     */
     public Ruutu(Ruututyyppi tyyppi, int leveys, int korkeus) {
         this.tyyppi = tyyppi;
         this.leveys = leveys;
@@ -29,10 +35,18 @@ public class Ruutu {
         this.liputettu = false;
     }
 
+    /**
+     * Suorittaa yksittäisen ruudun klikkauksen.
+     */
     public void klikkaus() {
         this.setKlikattu(true);
     }
 
+    /**
+     * Ruudun oma toString.
+     *
+     * @return Ruutu tekstimuodossa
+     */
     public String toString() {
         switch (tyyppi) {
             case MIINA:
@@ -48,34 +62,66 @@ public class Ruutu {
         }
     }
 
+    /**
+     *
+     * @return Ruudun tyyppi, joko MIINA tai TYHJA
+     */
     public Ruututyyppi getTyyppi() {
         return tyyppi;
     }
 
+    /**
+     *
+     * @param tyyppi Miksi ruudun tyyppi vaihdetaan
+     */
     public void setTyyppi(Ruututyyppi tyyppi) {
         this.tyyppi = tyyppi;
     }
 
+    /**
+     *
+     * @return totuusarvo siitä onko ruutua klikattu
+     */
     public boolean isKlikattu() {
         return klikattu;
     }
 
+    /**
+     *
+     * @param klikattu klikkautumisen vaihdettava totuusarvo
+     */
     public void setKlikattu(boolean klikattu) {
         this.klikattu = klikattu;
     }
 
+    /**
+     *
+     * @return kuinka monta miinaa ruudun ympärillä on
+     */
     public int getYmparys() {
         return ymparys;
     }
 
+    /**
+     *
+     * @param ymparys mikä on laskettu määrä ruudun ympärillä olevia miinoja
+     */
     public void setYmparys(int ymparys) {
         this.ymparys = ymparys;
     }
 
+    /**
+     *
+     * @return onko ruutu liputettu
+     */
     public boolean isLiputettu() {
         return liputettu;
     }
 
+    /**
+     *
+     * @param liputettu liputtatumisen uusi totuusarvo
+     */
     public void setLiputettu(boolean liputettu) {
         this.liputettu = liputettu;
     }
@@ -110,7 +156,6 @@ public class Ruutu {
 //        }
 //        return kasi;
 //    }
-    
 //    private static Image miina = new Image(new File("/Users/anttikoivurova/NetBeansProjects/HuonoMiinaharava/HuonoMiinaharava/src/main/java/images/miina.png").toURI().toString());
 //    private static Image nolla = new Image(new File("/Users/anttikoivurova/NetBeansProjects/HuonoMiinaharava/HuonoMiinaharava/src/main/java/images/tyhja0.png").toURI().toString());
 //    private static Image ykkonen = new Image(new File("/Users/anttikoivurova/NetBeansProjects/HuonoMiinaharava/HuonoMiinaharava/src/main/java/images/tyhja1.png").toURI().toString());

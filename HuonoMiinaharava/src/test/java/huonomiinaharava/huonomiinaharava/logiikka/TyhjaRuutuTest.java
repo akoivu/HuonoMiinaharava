@@ -54,6 +54,6 @@ public class TyhjaRuutuTest {
 
     @Test
     public void oikeaTyyppi() {
-        assertEquals(Ruututyyppi.TYHJA, tyhja.tyyppi);
+        assertEquals(Ruututyyppi.TYHJA, tyhja.getTyyppi());
     }
 }

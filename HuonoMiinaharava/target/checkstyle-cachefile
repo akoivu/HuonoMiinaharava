@@ -1,8 +1,9 @@
-#Thu Jun 01 21:56:56 EEST 2017
+#Thu Jun 08 22:32:30 EEST 2017
 /Users/anttikoivurova/NetBeansProjects/HuonoMiinaharava/HuonoMiinaharava/src/main/java/huonomiinaharava/huonomiinaharava/logiikka/Peli.java=1496343402000
+/Users/anttikoivurova/NetBeansProjects/HuonoMiinaharava/HuonoMiinaharava/src/main/java/huonomiinaharava/kayttoliittyma/Applikaatio.java=1496949806000
 /Users/anttikoivurova/NetBeansProjects/HuonoMiinaharava/HuonoMiinaharava/src/main/java/huonomiinaharava/huonomiinaharava/logiikka/Ruututyyppi.java=1496318244000
-/Users/anttikoivurova/NetBeansProjects/HuonoMiinaharava/HuonoMiinaharava/src/main/java/huonomiinaharava/huonomiinaharava/Main.java=1496313527000
-/Users/anttikoivurova/NetBeansProjects/HuonoMiinaharava/HuonoMiinaharava/src/main/java/huonomiinaharava/huonomiinaharava/logiikka/Ruutu.java=1496342116000
-/Users/anttikoivurova/NetBeansProjects/HuonoMiinaharava/HuonoMiinaharava/src/main/java/huonomiinaharava/huonomiinaharava/logiikka/Ruudukkotila.java=1496318244000
-/Users/anttikoivurova/NetBeansProjects/HuonoMiinaharava/HuonoMiinaharava/src/main/java/huonomiinaharava/huonomiinaharava/logiikka/Ruudukko.java=1496343402000
+/Users/anttikoivurova/NetBeansProjects/HuonoMiinaharava/HuonoMiinaharava/src/main/java/huonomiinaharava/huonomiinaharava/logiikka/PeliToiminta.java=1496950337000
 configuration*?=6460582C212A12FE1BBDA03D21B601664C3539C9
+/Users/anttikoivurova/NetBeansProjects/HuonoMiinaharava/HuonoMiinaharava/src/main/java/huonomiinaharava/huonomiinaharava/logiikka/Ruudukko.java=1496343402000
+/Users/anttikoivurova/NetBeansProjects/HuonoMiinaharava/HuonoMiinaharava/src/main/java/huonomiinaharava/huonomiinaharava/logiikka/Ruudukkotila.java=1496318244000
+/Users/anttikoivurova/NetBeansProjects/HuonoMiinaharava/HuonoMiinaharava/src/main/java/huonomiinaharava/huonomiinaharava/logiikka/Ruutu.java=1496950148000

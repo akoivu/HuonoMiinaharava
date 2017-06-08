@@ -25,7 +25,7 @@ under the License.
     <language>en-us</language>
     <copyright>&#169;2017</copyright>
     <item>
-      <title>File: 6,
+      <title>File: 7,
              Errors: 0,
              Warnings: 0,
              Infos: 0
@@ -88,6 +88,34 @@ under the License.
               </tr>
                           <tr>
                 <td>
+                  <a href="${project.url}/checkstyle.html#huonomiinaharava.kayttoliittyma.Applikaatio.java">huonomiinaharava/kayttoliittyma/Applikaatio.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#huonomiinaharava.huonomiinaharava.logiikka.PeliToiminta.java">huonomiinaharava/huonomiinaharava/logiikka/PeliToiminta.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
                   <a href="${project.url}/checkstyle.html#huonomiinaharava.huonomiinaharava.logiikka.Peli.java">huonomiinaharava/huonomiinaharava/logiikka/Peli.java</a>
                 </td>
                 <td>
@@ -103,20 +131,6 @@ under the License.
                           <tr>
                 <td>
                   <a href="${project.url}/checkstyle.html#huonomiinaharava.huonomiinaharava.logiikka.Ruudukkotila.java">huonomiinaharava/huonomiinaharava/logiikka/Ruudukkotila.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-              </tr>
-                          <tr>
-                <td>
-                  <a href="${project.url}/checkstyle.html#huonomiinaharava.huonomiinaharava.Main.java">huonomiinaharava/huonomiinaharava/Main.java</a>
                 </td>
                 <td>
                   0

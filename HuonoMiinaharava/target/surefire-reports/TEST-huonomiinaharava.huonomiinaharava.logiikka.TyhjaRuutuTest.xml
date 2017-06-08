@@ -59,9 +59,9 @@
     <property name="sun.io.unicode.encoding" value="UnicodeBig"/>
     <property name="sun.cpu.isalist" value=""/>
   </properties>
-  <testcase classname="huonomiinaharava.huonomiinaharava.logiikka.TyhjaRuutuTest" name="oikeaSyoteKlikkauksenJalkeen" time="0"/>
+  <testcase classname="huonomiinaharava.huonomiinaharava.logiikka.TyhjaRuutuTest" name="oikeaSyoteKlikkauksenJalkeen" time="0.001"/>
   <testcase classname="huonomiinaharava.huonomiinaharava.logiikka.TyhjaRuutuTest" name="aluksiKlikkaamatta" time="0"/>
-  <testcase classname="huonomiinaharava.huonomiinaharava.logiikka.TyhjaRuutuTest" name="oikeaSyoteEnnenKlikkausta" time="0.001"/>
+  <testcase classname="huonomiinaharava.huonomiinaharava.logiikka.TyhjaRuutuTest" name="oikeaSyoteEnnenKlikkausta" time="0"/>
   <testcase classname="huonomiinaharava.huonomiinaharava.logiikka.TyhjaRuutuTest" name="oikeaTyyppi" time="0"/>
-  <testcase classname="huonomiinaharava.huonomiinaharava.logiikka.TyhjaRuutuTest" name="klikattaessaKlikkautuu" time="0.001"/>
+  <testcase classname="huonomiinaharava.huonomiinaharava.logiikka.TyhjaRuutuTest" name="klikattaessaKlikkautuu" time="0"/>
 </testsuite>

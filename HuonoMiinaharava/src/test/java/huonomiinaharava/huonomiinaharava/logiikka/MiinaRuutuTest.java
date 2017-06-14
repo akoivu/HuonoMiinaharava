@@ -5,10 +5,7 @@
  */
 package huonomiinaharava.huonomiinaharava.logiikka;
 
-import org.junit.After;
-import org.junit.AfterClass;
 import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
@@ -33,18 +30,6 @@ public class MiinaRuutuTest {
         miina.klikkaus();
 
         assertTrue(miina.isKlikattu());
-    }
-
-    @Test
-    public void toStringOikeinEnnenKlikkausta() {
-        assertEquals("o", miina.toString());
-    }
-
-    @Test
-    public void toStringOikeinKlikkauksenJalkeen() {
-        miina.klikkaus();
-
-        assertEquals("x", miina.toString());
     }
 
     @Test

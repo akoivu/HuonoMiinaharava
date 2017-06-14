@@ -5,10 +5,7 @@
  */
 package huonomiinaharava.huonomiinaharava.logiikka;
 
-import org.junit.After;
-import org.junit.AfterClass;
 import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
@@ -43,54 +40,6 @@ public class RuudukkoTest {
         vakioRuudukkoIso.getRuudukko()[2][3] = new Ruutu(Ruututyyppi.MIINA, 2, 3);
         vakioRuudukkoIso.getRuudukko()[2][4] = new Ruutu(Ruututyyppi.MIINA, 2, 4);
         vakioRuudukkoIso.ymparykset();
-    }
-
-    @Test
-    public void lautaOnOikeanMuotoinenAluksi() {
-        String testi = "";
-
-        for (int i = 0; i < 7; i++) {
-            for (int j = 0; j < 4; j++) {
-                testi += "o";
-            }
-
-            testi += "\n";
-        }
-
-        assertEquals(testi, normiRuudukko.toString(7, 4, 1));
-    }
-
-    @Test
-    public void ekaKlikkausReunassa() {
-        taysRuudukko.kokoaRuudukko(0, 2, 1);
-
-        assertEquals(taysRuudukko.getRuudukko()[0][2].toString(), "5");
-    }
-
-    @Test
-    public void ekaKlikkausKeskella() {
-        taysRuudukko.kokoaRuudukko(1, 2, 1);
-
-        assertEquals(taysRuudukko.getRuudukko()[1][2].toString(), "8");
-    }
-
-    @Test
-    public void ekaKlikkausNurkassa() {
-        taysRuudukko.kokoaRuudukko(0, 0, 1);
-
-        assertEquals(taysRuudukko.getRuudukko()[0][0].toString(), "3");
-    }
-
-    @Test
-    public void laajennusToimii() {
-        vakioRuudukkoPieni.klikkaus(0, 0);
-
-        String vertailu = "JESJEJSEJJSEJSEJALNKJKNFS\n";
-        vertailu += "000\n"
-                + "011\n"
-                + "01L\n";
-
-        assertEquals(vertailu, vakioRuudukkoPieni.toString(3, 3, 1));
     }
 
     @Test

@@ -6,6 +6,6 @@ Miinaharava. Toteutetaan perinteinen miinaharavapeli. Tavoitteena saada ainakin 
 
 # Sekvenssikaaviot:
 ## Miinattoman ruudun klikkaus
-![Käyttäjä klikkaa ruutua, jossa ei ole miinaa](/dokumentaatio/kuvat/klikataanMiinatonta.png)
+![Käyttäjä klikkaa ruutua, jossa ei ole miinaa](/dokumentaatio/kuvat/klikataanMiinatontaUPDATE.png)
 ## Ruudun liputus
 ![Liputus](/dokumentaatio/kuvat/liputetaan.png)

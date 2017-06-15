@@ -8,4 +8,4 @@ Miinaharava. Toteutetaan perinteinen miinaharavapeli. Tavoitteena saada ainakin 
 ## Miinattoman ruudun klikkaus
 ![Käyttäjä klikkaa ruutua, jossa ei ole miinaa](/dokumentaatio/kuvat/klikataanMiinatonta.png)
 ## Ruudun liputus
-![Liputus](/dokumentaatio/kuvat/liputus.png)
+![Liputus](/dokumentaatio/kuvat/liputetaan.png)

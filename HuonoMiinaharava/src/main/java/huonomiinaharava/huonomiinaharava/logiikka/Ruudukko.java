@@ -42,7 +42,6 @@ public class Ruudukko {
             }
         }
     }
-
     /**
      * Ensimmäisen klikkauksen jälkeen asettaa miinat tyhjään ruudukkoon.
      * @param klikLeveys ensimmäisen klikkauksen leveyskoordinaatti
@@ -76,7 +75,6 @@ public class Ruudukko {
         ymparykset();
         klikkaus(klikLeveys, klikKorkeus);
     }
-
     /**
      * Liputtaa ruudun.
      * @param leveys liputettavan ruudun leveyskoordinaatti
@@ -84,20 +82,16 @@ public class Ruudukko {
      */
     public void liputus(int leveys, int korkeus) {
         Ruutu ruutu = ruudukko[leveys][korkeus];
-
         if (ruutu.isKlikattu()) {
             return;
         }
-
         if (ruutu.isLiputettu()) {
             liputetut--;
         } else {
             liputetut++;
         }
-
         ruutu.setLiputettu(!ruutu.isLiputettu());
     }
-
     /**
      * Hoitaa ruudukon ruudun klikkauksen riippuen ruudun tilasta; saattaa muuttaa ruudukon tilaa. 
      * @param leveys klikattavan ruudun leveyskoordinaatit
@@ -120,7 +114,6 @@ public class Ruudukko {
             tila = Ruudukkotila.VOITTOTILA;
         }
     }
-
     /**
      * Automaattisesti aukaisee klikattavan ympärillä olevat ruudut, jos ruudun ympärillä on  nolla miinaa.
      * @param ruutuLeveys käsiteltävän ruudun leveyskoordinaatti
@@ -141,7 +134,6 @@ public class Ruudukko {
                 }
             }
         }
-
         jaljella--;
     }
 
@@ -183,6 +175,7 @@ public class Ruudukko {
         this.alkuaika = alkuaika;
     }
 
+    
     public Ruutu[][] getRuudukko() {
         return ruudukko;
     }

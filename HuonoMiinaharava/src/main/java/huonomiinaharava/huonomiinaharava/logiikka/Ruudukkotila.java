@@ -10,7 +10,7 @@ package huonomiinaharava.huonomiinaharava.logiikka;
  * @author anttikoivurova
  */
 /**
- * Ruudukon eri tilat
+ * Ruudukon eri tilat.
  */
 public enum Ruudukkotila {
 

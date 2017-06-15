@@ -85,4 +85,27 @@ public class RuudukkoTest {
         assertFalse(ruutu.isLiputettu());
     }
 
+    @Test
+    public void ruudukkoAluksiPeliTilassa() {
+        assertEquals(Ruudukkotila.PELITILA, vakioRuudukkoIso.getTila());
+    }
+
+    @Test
+    public void tyhjatTyhjennettynaVoittoTila() {
+        taysRuudukko.kokoaRuudukko(0, 0, 0);
+        assertEquals(Ruudukkotila.VOITTOTILA, taysRuudukko.getTila());
+    }
+
+    @Test
+    public void miinaanOsuttuaHavioTila() {
+        vakioRuudukkoIso.klikkaus(4, 0);
+        assertEquals(Ruudukkotila.HAVIOTILA, vakioRuudukkoIso.getTila());
+    }
+    
+    @Test
+    public void laajennusToimii() {
+        vakioRuudukkoIso.klikkaus(4, 4);
+        
+        assertEquals(1, vakioRuudukkoIso.getRuudukko()[4][1].getYmparys());
+    }
 }

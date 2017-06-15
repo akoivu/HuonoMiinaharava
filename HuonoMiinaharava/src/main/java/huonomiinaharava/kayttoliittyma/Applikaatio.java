@@ -35,19 +35,13 @@ public class Applikaatio extends Application {
     private Image lippu = new Image("lippu.png");
     private Image havioruutu = new Image("havioruutu.png");
 
-    /**
-     * Muodostaa graafisen käyttöliittymän.
-     *
-     * @param primaryStage
-     * @throws Exception
-     */
     @Override
     public void start(Stage primaryStage) throws Exception {
         primaryStage.setTitle("Ruudukkovalinta");
         Label leveys = new Label("Leveys:");
         Label korkeus = new Label("Korkeus:");
-        ChoiceBox leveysValinta = new ChoiceBox(FXCollections.observableArrayList(valinnat(15)));
-        ChoiceBox korkeusValinta = new ChoiceBox(FXCollections.observableArrayList(valinnat(10)));
+        ChoiceBox leveysValinta = new ChoiceBox(FXCollections.observableArrayList(valinnat(26)));
+        ChoiceBox korkeusValinta = new ChoiceBox(FXCollections.observableArrayList(valinnat(16)));
         Button dimensioNappi = new Button("Jatka");
         GridPane dimensioGrid = new GridPane();
         dimensioGrid.add(leveys, 1, 1);
@@ -56,7 +50,6 @@ public class Applikaatio extends Application {
         dimensioGrid.add(korkeusValinta, 2, 2);
         dimensioGrid.add(dimensioNappi, 1, 3);
         Scene dimensioNakyma = new Scene(dimensioGrid);
-
         Label miinat = new Label("Miinat");
         Button miinaNappi = new Button("Jatka");
         Label tekstiLeveys = new Label("Leveys: ");
@@ -65,7 +58,6 @@ public class Applikaatio extends Application {
         miinaGrid.add(miinat, 1, 3);
         miinaGrid.add(miinaNappi, 1, 4);
         Scene miinaNakyma = new Scene(miinaGrid);
-
         primaryStage.setScene(dimensioNakyma);
         primaryStage.show();
         dimensioNappi.setOnAction((event) -> {
@@ -73,13 +65,10 @@ public class Applikaatio extends Application {
             int valittuKorkeus = Integer.parseInt((String) korkeusValinta.getValue());
             Label infoLeveys = new Label("Leveys: " + valittuLeveys);
             Label infoKorkeus = new Label("Korkeus: " + valittuKorkeus);
-
             ChoiceBox miinaValinta = new ChoiceBox(FXCollections.observableArrayList(valinnat(valittuLeveys * valittuKorkeus)));
-
             miinaGrid.add(infoLeveys, 1, 1);
             miinaGrid.add(infoKorkeus, 1, 2);
             miinaGrid.add(miinaValinta, 2, 3);
-
             primaryStage.setScene(miinaNakyma);
         });
         miinaNappi.setOnAction((event) -> {
@@ -89,7 +78,6 @@ public class Applikaatio extends Application {
             int valittuKorkeus = Integer.parseInt((String) korkeusBoksi.getValue());
             ChoiceBox miinaBoksi = (ChoiceBox) miinaGrid.getChildren().get(4);
             int valittuMiinaMaara = Integer.parseInt((String) miinaBoksi.getValue());
-
             ruudukko = new Ruudukko(valittuLeveys, valittuKorkeus, valittuMiinaMaara);
             GridPane grid = new GridPane();
             tyhjaRuudukko(grid);
@@ -98,6 +86,11 @@ public class Applikaatio extends Application {
         });
     }
 
+    /**
+     * Muodostaa näkymän tyhjästä ruudukosta.
+     *
+     * @param grid Ruudukko johon näkymä kootaan
+     */
     public void tyhjaRuudukko(GridPane grid) {
         for (int i = 0; i < ruudukko.getKorkeus(); i++) {
             for (int j = 0; j < ruudukko.getLeveys(); j++) {
@@ -108,7 +101,6 @@ public class Applikaatio extends Application {
                 } else {
                     stack = new StackPane(new ImageView(klikkaamaton));
                 }
-
                 int leveys = j;
                 int korkeus = i;
                 stack.setOnMouseClicked(e -> {
@@ -122,12 +114,18 @@ public class Applikaatio extends Application {
                         tyhjaRuudukko(grid);
                     }
                 });
-
                 grid.add(stack, j, i);
             }
         }
     }
 
+    /**
+     * Kokoaa pelinpäätösruudukkonäkymän.
+     *
+     * @param grid Ruudukko johon näkymä kootaan
+     * @param vikaLeveys viimeisen klikkauksen x-koordinaatti
+     * @param vikaKorkeus viimeisen klikkauksen y-koordinaatti
+     */
     public void pelinPaatos(GridPane grid, int vikaLeveys, int vikaKorkeus) {
         for (int i = 0; i < ruudukko.getKorkeus(); i++) {
             for (int j = 0; j < ruudukko.getLeveys(); j++) {
@@ -138,7 +136,7 @@ public class Applikaatio extends Application {
                         stack = new StackPane(new ImageView(havioruutu));
                     } else {
                         stack = new StackPane(new ImageView(new Image("tyhja" + ruutu.getYmparys() + ".png")));
-                    }         
+                    }
                 } else {
                     if (ruudukko.getTila().equals(Ruudukkotila.HAVIOTILA)) {
                         if (ruutu.getTyyppi().equals(Ruututyyppi.MIINA)) {
@@ -150,18 +148,21 @@ public class Applikaatio extends Application {
                         stack = new StackPane(new ImageView(lippu));
                     }
                 }
-
                 grid.add(stack, j, i);
             }
-        }        
+        }
     }
 
+    /**
+     * Päivittää näkymän ruudukko-olion perusteella.
+     *
+     * @param grid Ruudukko, johon näkymä kootaan
+     */
     public void paivita(GridPane grid) {
         if (ruudukko.getTila().equals(Ruudukkotila.VOITTOTILA)) {
             pelinPaatos(grid, 1, 1);
             return;
         }
-
         for (int i = 0; i < ruudukko.getKorkeus(); i++) {
             for (int j = 0; j < ruudukko.getLeveys(); j++) {
                 Ruutu ruutu = ruudukko.getRuudukko()[j][i];
@@ -195,23 +196,31 @@ public class Applikaatio extends Application {
                         }
                     });
                 }
-
                 grid.add(stack, j, i);
             }
         }
     }
 
+    /**
+     * main Käynnistää ohjelman.
+     *
+     * @param args En kuule tiedä
+     */
     public static void main(String[] args) {
         launch(Applikaatio.class);
     }
 
+    /**
+     * Antaa listan, jossa on numerot yhdestä raja-1 asti.
+     *
+     * @param raja Mihin asti halutaan numerot
+     * @return Lista, jossa on numerot yhdestä raja-1 asti
+     */
     public ArrayList<String> valinnat(int raja) {
         ArrayList<String> lista = new ArrayList();
-
         for (int i = 1; i < raja; i++) {
             lista.add("" + i);
         }
-
         return lista;
     }
 }

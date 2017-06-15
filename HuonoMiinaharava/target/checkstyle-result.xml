@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<checkstyle version="6.11.2">
+<file name="/Users/anttikoivurova/NetBeansProjects/HuonoMiinaharava/HuonoMiinaharava/src/main/java/huonomiinaharava/huonomiinaharava/logiikka/Ruudukko.java">
+</file>
+<file name="/Users/anttikoivurova/NetBeansProjects/HuonoMiinaharava/HuonoMiinaharava/src/main/java/huonomiinaharava/huonomiinaharava/logiikka/Ruudukkotila.java">
+</file>
+<file name="/Users/anttikoivurova/NetBeansProjects/HuonoMiinaharava/HuonoMiinaharava/src/main/java/huonomiinaharava/huonomiinaharava/logiikka/Ruutu.java">
+</file>
+<file name="/Users/anttikoivurova/NetBeansProjects/HuonoMiinaharava/HuonoMiinaharava/src/main/java/huonomiinaharava/huonomiinaharava/logiikka/Ruututyyppi.java">
+</file>
+<file name="/Users/anttikoivurova/NetBeansProjects/HuonoMiinaharava/HuonoMiinaharava/src/main/java/huonomiinaharava/kayttoliittyma/Applikaatio.java">
+<error line="1" severity="error" message="File length is 226 lines (max allowed is 200)." source="com.puppycrawl.tools.checkstyle.checks.sizes.FileLengthCheck"/>
+</file>
+</checkstyle>

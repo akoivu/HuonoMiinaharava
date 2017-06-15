@@ -44,10 +44,6 @@ public class Ruutu {
         return tyyppi;
     }
 
-    public void setTyyppi(Ruututyyppi tyyppi) {
-        this.tyyppi = tyyppi;
-    }
-
     public boolean isKlikattu() {
         return klikattu;
     }

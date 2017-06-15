@@ -153,7 +153,7 @@ public class Applikaatio extends Application {
 
                 grid.add(stack, j, i);
             }
-        }
+        }        
     }
 
     public void paivita(GridPane grid) {

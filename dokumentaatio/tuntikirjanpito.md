@@ -14,3 +14,6 @@ Päivä | Tunnit | Kuvaus
 10.6.2017 | 4h | GUI taitaa toimia
 12.6.2017 | 4h | Dokumentointia
 15.6.2017 | 2h | Loput säädöt
+22.6.2017 | 3h | Näkymät erillisiksi luokiksi
+26.6.2017 | 3h | Ajastus
+28.6.2017 | 2h | Palautuksen viimeistely

@@ -9,3 +9,4 @@ Miinaharava. Toteutetaan perinteinen miinaharavapeli. Tavoitteena saada ainakin 
 * [Tuntikirjanpito](dokumentaatio/tuntikirjanpito.md)
 * [Checkstyle-raportti](https://htmlpreview.github.io/?https://github.com/akoivu/HuonoMiinaharava/blob/master/dokumentaatio/checkstyle/checkstyle.html)
 * [Pit-raportti](https://htmlpreview.github.io/?https://github.com/akoivu/HuonoMiinaharava/blob/master/dokumentaatio/pit/201706281442/index.html)
+* [JavaDoc](https://htmlpreview.github.io/?https://github.com/akoivu/HuonoMiinaharava/blob/master/apidocs/index.html)

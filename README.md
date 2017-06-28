@@ -8,4 +8,4 @@ Miinaharava. Toteutetaan perinteinen miinaharavapeli. Tavoitteena saada ainakin 
 * [Aiheen kuvaus](dokumentaatio/aiheenKuvausJaRakenne.md)
 * [Tuntikirjanpito](dokumentaatio/tuntikirjanpito.md)
 * [Checkstyle-raportti](https://htmlpreview.github.io/?https://github.com/akoivu/HuonoMiinaharava/blob/master/dokumentaatio/checkstyle/checkstyle.html)
-* [Pit-raportti](https://htmlpreview.github.io/?https://github.com/akoivu/HuonoMiinaharava/blob/master/dokumentaatio/pit/201706152009/index.html)
+* [Pit-raportti](https://htmlpreview.github.io/?https://github.com/akoivu/HuonoMiinaharava/blob/master/dokumentaatio/pit/201706281442/index.html)

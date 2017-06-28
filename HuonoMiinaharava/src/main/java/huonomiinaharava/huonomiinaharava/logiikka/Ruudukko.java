@@ -1,4 +1,3 @@
-
 package huonomiinaharava.huonomiinaharava.logiikka;
 
 import java.util.ArrayList;
@@ -10,13 +9,12 @@ public class Ruudukko {
     private int leveys;
     private int korkeus;
     private int miinat;
-    private int liputetut;
     private int jaljella;
     private Ruudukkotila tila;
-    private long alkuaika;
 
     /**
      * Luo yksittäisen miinaharavaruudukon.
+     *
      * @param leveys ruudukon leveys
      * @param korkeus ruudukon korkeus
      * @param miinat ruudukon miinat
@@ -28,7 +26,6 @@ public class Ruudukko {
         this.miinat = miinat;
         this.tila = Ruudukkotila.PELITILA;
         this.jaljella = this.leveys * this.korkeus - this.miinat;
-        this.liputetut = 0;
         kokoaTyhjaRuudukko();
     }
 
@@ -42,14 +39,14 @@ public class Ruudukko {
             }
         }
     }
+
     /**
      * Ensimmäisen klikkauksen jälkeen asettaa miinat tyhjään ruudukkoon.
+     *
      * @param klikLeveys ensimmäisen klikkauksen leveyskoordinaatti
      * @param klikKorkeus ensimmäisen klikkauksen korkeuskoordinaatti
-     * @param alku ensimmäisen klikkauksen aika
      */
-    public void kokoaRuudukko(int klikLeveys, int klikKorkeus, long alku) {
-        alkuaika = alku;
+    public void kokoaRuudukko(int klikLeveys, int klikKorkeus) {
         ArrayList<Integer> lista = new ArrayList();
 
         for (int i = 0; i < leveys * korkeus; i++) {
@@ -75,25 +72,26 @@ public class Ruudukko {
         ymparykset();
         klikkaus(klikLeveys, klikKorkeus);
     }
+
     /**
      * Liputtaa ruudun.
+     *
      * @param leveys liputettavan ruudun leveyskoordinaatti
-     * @param korkeus liputettavan ruudun korkeuskoordinaatti 
+     * @param korkeus liputettavan ruudun korkeuskoordinaatti
      */
     public void liputus(int leveys, int korkeus) {
         Ruutu ruutu = ruudukko[leveys][korkeus];
         if (ruutu.isKlikattu()) {
             return;
         }
-        if (ruutu.isLiputettu()) {
-            liputetut--;
-        } else {
-            liputetut++;
-        }
+
         ruutu.setLiputettu(!ruutu.isLiputettu());
     }
+
     /**
-     * Hoitaa ruudukon ruudun klikkauksen riippuen ruudun tilasta; saattaa muuttaa ruudukon tilaa. 
+     * Hoitaa ruudukon ruudun klikkauksen riippuen ruudun tilasta; saattaa
+     * muuttaa ruudukon tilaa.
+     *
      * @param leveys klikattavan ruudun leveyskoordinaatit
      * @param korkeus klikattavan ruudun korkeuskoordinaatit
      */
@@ -114,10 +112,13 @@ public class Ruudukko {
             tila = Ruudukkotila.VOITTOTILA;
         }
     }
+
     /**
-     * Automaattisesti aukaisee klikattavan ympärillä olevat ruudut, jos ruudun ympärillä on  nolla miinaa.
+     * Automaattisesti aukaisee klikattavan ympärillä olevat ruudut, jos ruudun
+     * ympärillä on nolla miinaa.
+     *
      * @param ruutuLeveys käsiteltävän ruudun leveyskoordinaatti
-     * @param ruutuKorkeus käsiteltävän ruudun korkeuskoordinaatti 
+     * @param ruutuKorkeus käsiteltävän ruudun korkeuskoordinaatti
      */
     public void laajennus(int ruutuLeveys, int ruutuKorkeus) {
         for (int i = ruutuKorkeus - 1; i <= ruutuKorkeus + 1; i++) {
@@ -152,6 +153,7 @@ public class Ruudukko {
 
     /**
      * Selvittää käsiteltävää ruutua ympäröivien miinojen määrän.
+     *
      * @param ruutuLeveys käsiteltävän ruudun leveyskoordinaatti
      * @param ruutuKorkeus käsiteltävän ruudun korkeuskoordinaatti
      */
@@ -171,15 +173,10 @@ public class Ruudukko {
         ruutuhommeli.setYmparys(montako);
     }
 
-    public void setAlkuaika(long alkuaika) {
-        this.alkuaika = alkuaika;
-    }
-
-    
     public Ruutu[][] getRuudukko() {
         return ruudukko;
     }
-    
+
     public Ruudukkotila getTila() {
         return tila;
     }

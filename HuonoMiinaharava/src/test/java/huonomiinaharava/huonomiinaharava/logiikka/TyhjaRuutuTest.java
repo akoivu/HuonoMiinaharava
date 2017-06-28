@@ -1,4 +1,3 @@
-
 package huonomiinaharava.huonomiinaharava.logiikka;
 
 import org.junit.Before;

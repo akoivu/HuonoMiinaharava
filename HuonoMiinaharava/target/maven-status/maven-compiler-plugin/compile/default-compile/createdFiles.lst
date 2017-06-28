@@ -1,6 +1,10 @@
 huonomiinaharava/huonomiinaharava/logiikka/Ruudukkotila.class
+huonomiinaharava/kayttoliittyma/HavioNakyma.class
+huonomiinaharava/kayttoliittyma/ValintaNakyma.class
 huonomiinaharava/huonomiinaharava/logiikka/Ruudukko.class
+huonomiinaharava/kayttoliittyma/MiinaKenttaNakyma.class
 huonomiinaharava/huonomiinaharava/logiikka/Ruutu.class
 huonomiinaharava/huonomiinaharava/logiikka/Ruututyyppi.class
+huonomiinaharava/kayttoliittyma/VoittoNakyma.class
 huonomiinaharava/kayttoliittyma/Applikaatio.class
-huonomiinaharava/huonomiinaharava/logiikka/Ruutu$1.class
+huonomiinaharava/kayttoliittyma/MiinaValintaNakyma.class

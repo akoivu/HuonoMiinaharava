@@ -5,7 +5,6 @@
  */
 package huonomiinaharava.huonomiinaharava.logiikka;
 
-
 /**
  * Luokka tarjoaa yksittäisen miinaharavaruudun toiminnallisuuden.
  */
@@ -37,6 +36,10 @@ public class Ruutu {
      * Suorittaa yksittäisen ruudun klikkauksen.
      */
     public void klikkaus() {
+        if (liputettu) {
+            return;
+        }
+
         this.setKlikattu(true);
     }
 
@@ -51,19 +54,19 @@ public class Ruutu {
     public void setKlikattu(boolean klikattu) {
         this.klikattu = klikattu;
     }
-    
+
     public int getYmparys() {
         return ymparys;
     }
-    
+
     public void setYmparys(int ymparys) {
         this.ymparys = ymparys;
     }
-    
+
     public boolean isLiputettu() {
         return liputettu;
     }
-    
+
     public void setLiputettu(boolean liputettu) {
         this.liputettu = liputettu;
     }

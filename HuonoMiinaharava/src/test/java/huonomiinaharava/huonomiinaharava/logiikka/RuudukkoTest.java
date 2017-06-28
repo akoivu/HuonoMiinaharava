@@ -27,7 +27,7 @@ public class RuudukkoTest {
     public void setUp() {
         normiRuudukko = new Ruudukko(4, 7, 24);
         taysRuudukko = new Ruudukko(4, 7, 27);
-        vakioRuudukkoPieni = new Ruudukko(3, 3, 1);
+        vakioRuudukkoPieni = new Ruudukko(5, 3, 1);
         vakioRuudukkoPieni.kokoaTyhjaRuudukko();
         vakioRuudukkoPieni.getRuudukko()[2][2] = new Ruutu(Ruututyyppi.MIINA, 2, 2);
         vakioRuudukkoPieni.ymparykset();
@@ -86,13 +86,20 @@ public class RuudukkoTest {
     }
 
     @Test
+    public void klikattuRuutuEiLiputu() {
+        vakioRuudukkoIso.klikkaus(0, 0);
+        vakioRuudukkoIso.liputus(0, 0);
+        assertFalse(vakioRuudukkoIso.getRuudukko()[0][0].isLiputettu());
+    }
+
+    @Test
     public void ruudukkoAluksiPeliTilassa() {
         assertEquals(Ruudukkotila.PELITILA, vakioRuudukkoIso.getTila());
     }
 
     @Test
     public void tyhjatTyhjennettynaVoittoTila() {
-        taysRuudukko.kokoaRuudukko(0, 0, 0);
+        taysRuudukko.kokoaRuudukko(0, 0);
         assertEquals(Ruudukkotila.VOITTOTILA, taysRuudukko.getTila());
     }
 
@@ -101,11 +108,33 @@ public class RuudukkoTest {
         vakioRuudukkoIso.klikkaus(4, 0);
         assertEquals(Ruudukkotila.HAVIOTILA, vakioRuudukkoIso.getTila());
     }
-    
+
     @Test
     public void laajennusToimii() {
         vakioRuudukkoIso.klikkaus(4, 4);
-        
+
         assertEquals(1, vakioRuudukkoIso.getRuudukko()[4][1].getYmparys());
+    }
+
+    @Test
+    public void laajennusToimiiKunLiputettu() {
+        vakioRuudukkoIso.liputus(4, 3);
+        vakioRuudukkoIso.klikkaus(4, 4);
+        assertFalse(vakioRuudukkoIso.getRuudukko()[4][3].isKlikattu());
+    }
+
+    @Test
+    public void ruudukkoOikeanLevyinen() {
+        assertEquals(5, vakioRuudukkoPieni.getLeveys());
+    }
+
+    @Test
+    public void ruudukkoOikeanKorkuinen() {
+        assertEquals(3, vakioRuudukkoPieni.getKorkeus());
+    }
+
+    @Test
+    public void ruudukossaOikeaMaaraMiinoja() {
+        assertEquals(5, vakioRuudukkoIso.getMiinat());
     }
 }
